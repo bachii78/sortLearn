@@ -1,5 +1,5 @@
-#ifndef TASK_H
-#define TASK_H
+#ifndef _task_h_
+#define _task_h_
 #include <iostream>
 #include <time.h>
 
@@ -11,10 +11,13 @@ void insertionSort(int*, int);
 
 void swap(int&, int&);
 
-int getMax();
+int getMax(int*, int, int, int);
 
-int getMin();
+int getMin(int*, int, int, int);
 
+int countMin(int*, int);
 
-#endif // TASK_H
+int countMax(int*, int);
+
+#endif /*_task_h_*/
 
