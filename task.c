@@ -36,8 +36,22 @@ void intsertionSort(int* ar, int size){
 
 }
 
-int getMax();
+int getMax(int* ar, int first, int last, int max){
+       	if(k == n-1){
+	      	return max;
+	{
+	if(max < mas[k]){
+	       	max = mas[k];
+	}
+        max = getMax(mas, first, last+1, max);
+}
 
-int getMin();
-
-
+int getMin(int* ar, int first, int last, int min){
+	if(last == first - 1){
+		return ar[0];
+	}
+	if (min > ar[k]){
+		min = ar[k];
+	}
+	min = getMin(ar, first, last+1, min);
+}
