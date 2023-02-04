@@ -1,7 +1,7 @@
 #ifndef _task_h_
 #define _task_h_
 #include <iostream>
-#include <time.h>
+#include<time.h>
 
 void fillRandom(int*, int);
 
@@ -10,6 +10,10 @@ int showEl(const int*, int, int, int);
 void insertionSort(int*, int);
 
 void swap(int&, int&);
+
+int max(int, int);
+
+int min(int, int);
 
 int getMax(int*, int, int, int);
 
