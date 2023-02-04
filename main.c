@@ -1,6 +1,5 @@
 #include<iostream>
 #include<time.h>
-
 void fillRandom(int*mass, int size){
     srand(time(nullptr));
         for (int i = 0; i < size; i++) {
@@ -49,9 +48,25 @@ int getMin(int* ar, int* first, int* last){
 
 }
 
+int max(int a, int b){
+    if(a > b){
+        return a;
+    }
+    return b;
+}
+
+int getMax(int* ar, int* first, int* last){
+    if(last == first){
+        return *first;
+    }
+    return max(*first, getMax(ar, first+1, last));
+
+}
+
 int countMax(int* ar, int size){
         int count = 0;
         int temp = 0;
+        int number = 0;
         for(int i = 0; i < size-1; i++){
                 if(ar[i] == ar[i+1]){
                         temp++;
@@ -59,24 +74,27 @@ int countMax(int* ar, int size){
                 if(temp > count){
                 count = temp;
                 temp = 0;
+                number = ar[i];
                 }
         }
-        return count;
+        return number;
 }
 
 int countMin(int* ar, int size){
         int count = size;
         int temp = 0;
+        int number = 0;
         for(int i = 0; i < size-1; i++){
                 if(ar[i] == ar[i+1]){
                         temp++;
                 }
                 if(temp < count){
                 count = temp;
+                number = ar[i];
                 temp = 0;
                 }
         }
-        return count;
+        return number;
 }
 
 
@@ -89,9 +107,19 @@ int main(){
     intsertionSort(ar, 100);
     showEl(ar, 100, 10, 10);
     std::cout << '\n';
-    std::cout << getMin(ar,&ar[0],&ar[99]) << std::endl;
-    std::cout << countMax(ar, 100) << std::endl;
-    std::cout << countMin(ar, 100) << std::endl;
+    std::cout << "максимальное число в массиве: " << getMax(ar,&ar[0],&ar[99]) << std::endl;
+    std::cout << "минимальное число в массиве: " << getMin(ar,&ar[0],&ar[99]) << std::endl;
+    std::cout << "чаще всего встречается число: " << countMax(ar, 100) << std::endl;
+    std::cout << "реже всего встречается число: " << countMin(ar, 100) << std::endl;
+//создание массива для графика
+    int mas[1000];
+    srand(time(nullptr));
+    for(int i = 0; i < 1000; i++){
+        mas[i] = rand() % 200;
+    }
+//	for(int i = 0; i < 500; i++){
+//		std::cout << mas[i] << '\t' << mas[i + 1] << '\n';
+//	}
     return 0;
 }
- 
+
