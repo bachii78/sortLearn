@@ -49,6 +49,38 @@ int getMin(int* ar, int* first, int* last){
 
 }
 
+int countMax(int* ar, int size){
+        int count = 0;
+        int temp = 0;
+        for(int i = 0; i < size-1; i++){
+                if(ar[i] == ar[i+1]){
+                        temp++;
+                }
+                if(temp > count){
+                count = temp;
+                temp = 0;
+                }
+        }
+        return count;
+}
+
+int countMin(int* ar, int size){
+        int count = size;
+        int temp = 0;
+        for(int i = 0; i < size-1; i++){
+                if(ar[i] == ar[i+1]){
+                        temp++;
+                }
+                if(temp < count){
+                count = temp;
+                temp = 0;
+                }
+        }
+        return count;
+}
+
+
+
 int main(){
     int ar[100];
     fillRandom(ar, 100);
@@ -57,8 +89,9 @@ int main(){
     intsertionSort(ar, 100);
     showEl(ar, 100, 10, 10);
     std::cout << '\n';
-    std::cout << getMin(ar,&ar[0],&ar[99]);
+    std::cout << getMin(ar,&ar[0],&ar[99]) << std::endl;
+    std::cout << countMax(ar, 100) << std::endl;
+    std::cout << countMin(ar, 100) << std::endl;
     return 0;
 }
-
-
+ 
