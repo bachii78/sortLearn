@@ -1,5 +1,6 @@
 #include <iostream>
 #include<time.h>
+#include<task.h>
 
 int main(){
 	int mas[1000];
