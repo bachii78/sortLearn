@@ -40,12 +40,14 @@ int min(int a, int b){
     }
     return a;
 }
-
-int getMin(int* ar, int* first, int* last){
+int getMin(int* ar, int* first, int* last, int deep){
     if(last == first){
+        std::cout << "минимальное число в массиве: " << *first << std::endl;
         return *first;
+
     }
-    return min(*first, getMin(ar, first+1, last));
+    std::cout << deep++ << std::endl;
+    return min(*first, getMin(ar, first+1, last, deep));
 
 }
 
@@ -56,14 +58,17 @@ int max(int a, int b){
     return b;
 }
 
-int getMax(int* ar, int* first, int* last){
+int getMax(int* ar, int* first, int* last, int deep){
     if(last == first){
+        std::cout << "максимальное число в массиве: " << *first << std::endl;
         return *first;
+
     }
-    return max(*first, getMax(ar, first+1, last));
+    std::cout << deep++ << std::endl;
+    return max(*first, getMax(ar, first+1, last, deep));
+
 
 }
-
 int countMax(int* ar, int size){
         int count = 0;
         int temp = 0;
@@ -72,10 +77,12 @@ int countMax(int* ar, int size){
                 if(ar[i] == ar[i+1]){
                         temp++;
                 }
-                if(temp > count){
-                count = temp;
-                temp = 0;
-                number = ar[i];
+                else{
+                    if(temp > count){
+                        count = temp;
+                        number = ar[i];
+                    }
+                    temp = 0;
                 }
         }
         return number;
@@ -89,10 +96,13 @@ int countMin(int* ar, int size){
                 if(ar[i] == ar[i+1]){
                         temp++;
                 }
-                if(temp < count){
-                count = temp;
-                number = ar[i];
-                temp = 0;
+                else{
+                    if(temp < count){
+                        count = temp;
+                        number = ar[i];
+                    }
+                    temp = 0;
+
                 }
         }
         return number;

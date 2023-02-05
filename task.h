@@ -15,9 +15,9 @@ int max(int, int);
 
 int min(int, int);
 
-int getMax(int*, int, int, int);
+int getMax(int*, int*, int*, int);
 
-int getMin(int*, int, int, int);
+int getMin(int*, int*, int*, int);
 
 int countMin(int*, int);
 
